@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DataBaseAldana extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME ="register.db";
+    public static final String DATABASE_NAME ="registerUser.db";
     public static final String TABLE_NAME ="registeruser";
     public static final String COL_1 ="ID";
     public static final String COL_2 ="username";
@@ -23,7 +23,8 @@ public class DataBaseAldana extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE registeruser (ID INTEGER PRIMARY  KEY AUTOINCREMENT, username TEXT, password TEXT, cellnumber TEXT)");
+        String createTable = "CREATE TABLE registeruser (ID INTEGER PRIMARY  KEY AUTOINCREMENT, username TEXT, password TEXT, cellnumber TEXT)";
+        sqLiteDatabase.execSQL(createTable);
 
     }
 
@@ -39,7 +40,7 @@ public class DataBaseAldana extends SQLiteOpenHelper {
         contentValues.put("username",user);
         contentValues.put("password",password);
         contentValues.put("cellnumber",cellnumber);
-        long res = db.insert("registeruser", null, contentValues);
+        long res = db.insert(TABLE_NAME, null, contentValues);
         db.close();
         return res;
     }
@@ -49,6 +50,7 @@ public class DataBaseAldana extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String selection = COL_2 + "=?" + " and " + COL_3 + "=?";
         String[] selectionArgs = { username, password };
+
         Cursor cursor = db.query(TABLE_NAME,columns,selection,selectionArgs,null,null,null);
         int count = cursor.getCount();
         cursor.close();

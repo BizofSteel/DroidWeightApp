@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/finalappbackground"
+    android:textAlignment="center"
     tools:context=".EnterCurrentWeight">
 
     <ImageView
@@ -63,6 +64,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textCurrentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editCurrentWeight" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

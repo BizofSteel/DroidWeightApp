@@ -17,7 +17,7 @@
         android:drawableLeft="@drawable/ic_action_password"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:shadowColor="#FDE0E0"
         android:textColor="#F44336"
         android:textColorHint="#A8FFFFFF"

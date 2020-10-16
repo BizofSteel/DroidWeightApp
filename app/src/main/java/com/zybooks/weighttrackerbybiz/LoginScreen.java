@@ -50,7 +50,7 @@ public class LoginScreen extends AppCompatActivity {
                     grantMainAct();
                 }
                 else{
-                    Toast.makeText(LoginScreen.this, "Login Credentials are Incorrect", Toast.LENGTH_SHORT).show();
+                    toastMessage("Login Credentials are Incorrect");
                 }
             }
         });
@@ -64,6 +64,10 @@ public class LoginScreen extends AppCompatActivity {
     public void grantMainAct(){
         Intent intent = new Intent (this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void toastMessage(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 }

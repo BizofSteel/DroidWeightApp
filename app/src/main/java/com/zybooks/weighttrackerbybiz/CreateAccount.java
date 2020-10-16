@@ -41,16 +41,16 @@ public class CreateAccount extends AppCompatActivity {
                 if(password.equals(confpassword)){
                     long checkdb = db.addNewMember(user, password, cellnumber);
                     if(checkdb>0){
-                        Toast.makeText(CreateAccount.this, "You Are Now Registered", Toast.LENGTH_SHORT).show();
+                        toastMessage("You Are Now Registered");
                         openLoginScreen();
                     }
                     else{
-                        Toast.makeText(CreateAccount.this, "Registration Not Valid, PLease try again", Toast.LENGTH_SHORT).show();
+                        toastMessage("Registration Not Valid, PLease try again");
                     }
 
                 }
                 else{
-                    Toast.makeText(CreateAccount.this, "Your Passwords Do Not Match", Toast.LENGTH_SHORT).show();
+                    toastMessage("Your Passwords Do Not Match");
                 }
             }
         });
@@ -59,5 +59,9 @@ public class CreateAccount extends AppCompatActivity {
     public void openLoginScreen(){
         Intent intent = new Intent (this, LoginScreen.class);
         startActivity(intent);
+    }
+
+    private void toastMessage(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
