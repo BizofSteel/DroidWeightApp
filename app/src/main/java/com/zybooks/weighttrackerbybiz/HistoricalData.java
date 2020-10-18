@@ -1,5 +1,6 @@
 package com.zybooks.weighttrackerbybiz;
 
+//HEADER INCLUSIONS
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HistoricalData extends AppCompatActivity {
+
+    //SET LOCAL VARIABLES
     DataBaseWeight Weightdb;
     private StringBuilder weightHistory;
     private Cursor data;
@@ -25,32 +28,22 @@ public class HistoricalData extends AppCompatActivity {
     private TextView txWeight;
     private TextView txTest;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historical_data);
 
+        //TIE ACTIVITY ID'S TO LOCAL VARIABLES
         homeLogo = findViewById(R.id.imageLogo);
         bHome = findViewById(R.id.buttonHome);
         txWeight = findViewById(R.id.hisWeight);
         txTest = findViewById(R.id.textViewTest);
         clWeight = findViewById(R.id.buttonCLHistory);
-
         Weightdb = new DataBaseWeight(this);
         data = Weightdb.getListContents();
         weightHistory = new StringBuilder();
 
-
-
-        homeLogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toMainAct();
-            }
-        });
-
-
+        //RETRIEVE DATABASE INFORMATION (HISTORY)
         if(data.getCount() == 0){
             txTest.setText("You have no Weight History");
         }
@@ -61,10 +54,10 @@ public class HistoricalData extends AppCompatActivity {
             }
         }
 
+        //CLEAR HISTORY
         clWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if(data.getCount() == 0){
                     toastMessage("There is No History to Clear");
                 }
@@ -80,32 +73,34 @@ public class HistoricalData extends AppCompatActivity {
                                 }
                             })
                             .setNegativeButton("Cancel",null);
-
                     AlertDialog alert = builder.create();
                     alert.show();
                 }
-
             }
         });
 
-
-
+        //BUTTON AND LOGO TO GO TO HOMEPAGE
         bHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toMainAct();
             }
         });
-
-
-
+        homeLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toMainAct();
+            }
+        });
     }
 
+    //METHOD TO RETURN TO HOME PAGE
     public void toMainAct(){
         Intent intent = new Intent (this, MainActivity.class);
         startActivity(intent);
     }
 
+    //TOAST METHOD
     private void toastMessage(String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

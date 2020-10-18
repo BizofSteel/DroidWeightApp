@@ -1,5 +1,6 @@
 package com.zybooks.weighttrackerbybiz;
 
+//HEADER INCLUSIONS
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 public class EnterTargetWeight extends AppCompatActivity {
 
+    //SET LOCAL VARIABLES
     private ImageView homeLogo;
     private EditText newTargetWeight;
     private Button submitTargetWeight;
@@ -22,10 +24,12 @@ public class EnterTargetWeight extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_target_weight);
 
+        //TIE ACTIVITY ID'S TO LOCAL VARIABLES
         homeLogo = findViewById(R.id.imageLogo);
         newTargetWeight = findViewById(R.id.editTargetWeight);
         submitTargetWeight = findViewById(R.id.buttonTargetSubmit);
 
+        //SUBMIT TARGET WEIGHT AND SAVE TO SP
         submitTargetWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +47,7 @@ public class EnterTargetWeight extends AppCompatActivity {
             }
         });
 
-
+        //CLICK LOGO TO GO TO HOME PAGE
         homeLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,11 +56,13 @@ public class EnterTargetWeight extends AppCompatActivity {
         });
     }
 
+    //METHOD FOR RETURNING TO HOME PAGE
     public void toMainAct(){
         Intent intent = new Intent (this, MainActivity.class);
         startActivity(intent);
     }
 
+    //TOAST METHOD
     private void toastMessage(String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
